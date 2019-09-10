@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="last">下</button>
+    <button id="frist">上</button>
+    <script>
+    let con=box.innerHTML;
+    let date=new Date()
+    last.onclick=function(){
+        for(let i=0;i<31;i++){
+        let cate=date.setDate(''+i)
+        box.innerHTML+='<span style="border:1px solid #333;margin-left:2px">'+date.getDate()+'</span>'
+        if(date.getDate()==1){box.innerHTML+='<br/>'}}
+    }
+    </script>
+</body>
+</html>

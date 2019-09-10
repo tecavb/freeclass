@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            margin: 0 auto;
+            width: 1226px;
+            position: relative;
+            height: 460px;
+        }
+
+        img {
+            width: 1226px;
+            height: 460px;
+        }
+
+        .img {
+            width: 1226px;
+            height: 460px;
+            position: absolute;
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.5s
+        }
+
+        .list li {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            border: 1px solid #7c7c7c;
+            background-color: #f1f1f1;
+            float: left;
+            margin-left: 15px;
+        }
+
+        .list {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            z-index: 999
+        }
+
+        #left,
+        #right {
+            width: 20px;
+            height: 40px;
+            background-color: #e1e1e1;
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            line-height: 40px;
+        }
+
+        #left {
+            left: 0;
+        }
+
+        #right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class='img' style="opacity: 1"><img src="./images/_01.jpg" alt=""></div>
+        <div class='img'><img src="./images/_02.jpg" alt=""></div>
+        <div class='img'><img src="./images/_03.jpg" alt=""></div>
+        <div class='img'><img src="./images/_04.jpg" alt=""></div>
+        <div class='img'><img src="./images/_05.jpg" alt=""></div>
+        <div id="left">左</div>
+        <div id="right">右</div>
+        <ul class="list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        const list = document.querySelectorAll('#box .list li');
+        const left = document.getElementById('left')
+        const right = document.getElementById('right')
+        const img = document.getElementsByClassName('img')
+        function fn(a, b) {//
+            for (let i = 0; i < b.length; i++) {
+                if (i == a) { b[i].style.borderColor = "blue";
+                 img[i].style = ' opacity: 1;' }
+                else { b[i].style.borderColor = ""; 
+                img[i].style = 'opacity:0' }
+            }
+        }
+        let i = 0;
+        let av = setInterval(righ, 3000);
+        box.onmouseover = function () {
+            clearInterval(av)
+        }
+        box.onmouseout = function () {
+            av=setInterval(righ, 3000);
+        }
+        function righ() {
+            i++;
+            if (i >= list.length) { i = 0 }
+            fn(i, list)
+        }
+        right.onclick = righ
+        left.onclick = function () {
+            i--;
+            if (i >= 0) { }
+            else { i = list.length - 1; }
+            fn(i, list)
+        }
+        for (let k = i; k < list.length; k++) {
+            list[k].onclick = function () {
+                fn(k, list)
+                i = k;
+            }
+        }
+    </script>
+</body>
+
+</html>

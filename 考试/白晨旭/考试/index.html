@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>评分</title>
+	<style>
+		body,
+		h1 {
+			margin: 0;
+			padding: 0;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.starts {
+			overflow: hidden;
+		}
+
+		.starts span {
+			display: block;
+			float: left;
+			/* padding: 3px; */
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="pingfen.css" />
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="baidu">
+			<div class="caption">
+				<h1></h1>
+				<span>总体评价</span>
+			</div>
+			<div class="context">
+				<ul class="starts">
+					<li class="xx2 xx"></li>
+					<li class="xx2 xx"></li>
+					<li class="xx2 xx"></li>
+					<li class="xx2 xx"></li>
+					<li class="xx2 xx"></li>
+				</ul>
+				<div class="info">力推</div>
+			</div>
+			<div class="tips">
+				小提示：点击星星就能打分
+			</div>
+		</div>
+	</div>
+
+	<script>
+		/*
+			xx2 -> 空星
+			xx -> 有星
+			xx3 -> 透明星
+		*/
+
+		let arr = ['极差', '一般', '不错', '推荐', '力推'];
+		let li = document.querySelectorAll('.starts li')
+		let info = document.querySelector('.info')
+		function main(index) {
+			for (let i = 0; i < li.length; i++) {
+				info.innerText = arr[index]
+				if (i <= index) {
+					if (index < 2) { li[i].className='xx3' }
+					else { li[i].className='xx2'; }
+				}else {
+					li[i].className='xx';
+				}}}
+		let inx = 4;
+		for (let i = 0; i < li.length; i++) {
+			li[i].index = i;
+			li[i].onmouseover = function () {
+				main(this.index)
+			}
+			li[i].onmouseout = function () {
+				main(inx)
+			}
+			li[i].onclick = function () {
+				main(this.index)
+				inx = this.index
+			}}
+	</script>
+</body>
+
+</html>

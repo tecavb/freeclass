@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" style="width: 100px;height: 100px;background:olive">请设置样式</div>
+    属性:<input type="text" id="num1" />
+    属性值:<input type="text" id="num2" />
+    <input type="button" value="确认" id="calcu" />
+    <script>
+        calcu.onclick = function () {
+            let Num1 = num1.value;
+            let Num2 = num2.value;
+            box.style[Num1] = Num2;
+        }
+    </script>
+</body>
+
+</html>

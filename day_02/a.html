@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="user"><input type="password" id="password">
+    <a id="sbm">提交</a>
+    <div id="box" style="display: none">用户名或密码错误</div>
+    <script>
+        let user1 = [
+            'aaaa','bbbb','cccc','dddd','eeee','ffff','gggg','hhhh'
+        ]
+        let password1= [
+            '11111','2222','3333','4444','55555','6666','7777','8888'
+        ]
+        document.getElementById('sbm').onclick = function () {
+            let user = document.getElementById('user');
+            let password = document.getElementById('password');
+            function au() {
+                return Boolean(
+                    user.value == user1[0] && password.value == password1[0] ||
+                    user.value == user1[1] && password.value == password1[1] ||
+                    user.value == user1[2] && password.value == password1[2] ||
+                    user.value == user1[3] && password.value == password1[3] ||
+                    user.value == user1[4] && password.value == password1[4] ||
+                    user.value == user1[5] && password.value == password1[5] ||
+                    user.value == user1[6] && password.value == password1[6] ||
+                    user.value == user1[7] && password.value == password1[7])
+            }
+            let aua = au()
+            if (aua == false) {
+                document.getElementById('box').style.display = 'block';
+            } else {
+                document.getElementById('sbm').href = "https://www.baidu.com";
+            }
+        }
+    </script>
+</body>
+
+</html>

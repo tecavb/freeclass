@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;padding: 0;
+    }
+    ul{
+        width: 300px;
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const li=document.querySelectorAll('li')
+        let x=100,y=0,z=100
+        let x1=0,y1=50,z1=100
+    for (let i = 0; i < li.length; i++) {
+        li[i].index=i;
+        let ar
+        li[i].onmouseenter=function () {
+            x=100,y=0,z=100
+            x1=20,y1=0,z1=10
+            ar=this.index
+        }
+        li[i].onmouseleave=function () {
+            x=100,y=100,z=100
+            x1=0,y1=100,z1=100
+        }
+        (function move() {
+                timer = requestAnimationFrame(move);
+                li[ar].style.background=i%2?'rgba('+x+','+y+','+z+')':'rgba('+x1+','+y1+','+z1+')'
+            })();
+        
+    }
+    </script>
+</body>
+</html>

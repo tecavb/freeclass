@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .box {
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        background-size: cover;
+        position: relative;
+    }
+
+    li {
+        width: 40px;
+        height: 40px;
+        float: left;
+        border: 1px solid #d4d4;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 40px;
+    }
+
+    .ul2 li {
+        display: none;
+        width: 200px;
+        height: 80px;
+        line-height: 80px;
+        position: absolute;
+        top: 200px;
+        left: 0;
+    }
+
+    .active {
+        color: #d4d4;
+        background-color:#e3c5;
+    }
+
+    ul>li:first-child {
+        display: block;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <ul class="ul1">
+        </ul>
+        <ul class="ul2">
+        </ul>
+    </div>
+    <script>
+        function fnn(a) {
+            return document.querySelectorAll(a)
+        }
+        const ul = fnn('ul')
+        let a = 0;
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                ul[0].innerHTML += '<li>' + a + '</li>'
+                a++
+            }
+            ul[0].innerHTML += '<br/>';
+        }
+        for (let i = 0; i < 25; i++) {
+            ul[1].innerHTML += '<li>' + i + '</li>'
+        }
+        const li1 = fnn('.ul1 li')
+        const li2 = fnn('.ul2 li')
+        function fn(b, c) {//b是按钮，c显示隐藏的内容
+            let l = b[0]
+            for (var i = 0; i < b.length; i++) {
+                b[i].index = i;
+                b[i].onclick = function () {
+                    c[this.index].style.display = 'block';
+                    b[this.index].className = 'active';
+                    if (l === b[this.index]) return
+                    l.className = '';
+                    c[l.index].style.display = 'none';
+                    l = this
+                }
+            }
+        }
+        fn(li1, li2)
+    </script>
+</body>
+
+</html>

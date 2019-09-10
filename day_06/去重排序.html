@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let ary = [5, 6.2, 8.85, 1, 3, 6.231, 5, 6, 1, 3, 5, 2.5, 3.11, 0.3, 1, -5.5, 6, 2, 1, 3.3, 24, 51, 2,
+      31.1, 5, 512, 52, 85.2, 5, 1, 42, -3, -132];
+    function shouge(ary, a = 1, b = 0, max, min) {//去重，排序，(有效位数0,1,2,3(慎用3) 过滤有效数字0,1, 最大值，最小值，)
+      if (max == undefined) {
+        max = 0; ary.forEach(item => { if (max < item) { max = item } })
+      }
+      if (min == undefined) {
+        min = 0; ary.forEach(item => { if (min > item) { min = item } })
+      }
+      let ary2 = [];
+      let c; if (a == 0) { c = 1 } if (a == 1) { c = 0.1 } if (a == 2) { c = 0.01 } if (a == 3) { c = 0.001 }
+      for (let num = max; num > min - c; num = num - c) {//循环标尺
+        for (let i = 0; i < ary.length; i++) {//循环数组跟标尺比较
+          if (b == 1) { ary[i] = +ary[i].toFixed(a) }//数组四舍五入
+            if (ary[i] == +num.toFixed(a)) {//如果数组数等于标尺数
+              ary2.push(+num.toFixed(a));//把等于的数放入ary2
+              break;
+          }
+        }
+      } return ary2
+    }
+    let vv = shouge(ary,2)
+    console.log(vv)
+  </script>
+</body>
+
+</html>

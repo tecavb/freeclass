@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 400px;
+        }
+
+        #box div {
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000;
+            display: none;
+        }
+
+        #box div.show {
+            display: block;
+        }
+
+        .active {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <button class="active">按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <button>按钮四</button>
+        <button>按钮五</button>
+        <button>按钮六</button>
+        <div class="show">内容一</div>
+        <div>内容二</div>
+        <div>内容三</div>
+        <div>内容四</div>
+        <div>内容五</div>
+        <div>内容六</div>
+    </div>
+    <script>
+        /*
+    
+            1.给每个按钮添加点击事件函数
+            2.点击的按钮亮，别的按钮不亮
+            3.点第一个按钮就对应第一个div，以此类推
+        */
+        const btns = document.querySelectorAll('button');
+        const divs = document.querySelectorAll('#box div');
+        function fn(b, c) {//b是按钮，c显示隐藏的内容
+            let l = b[0]
+            for (var i = 0; i < b.length; i++) {
+                b[i].index = i;
+                b[i].onclick = function () {
+                    c[this.index].style.display= 'block';
+                    b[this.index].className = 'active';
+                    if (l === b[this.index]) return
+                    l.className = '';
+                    c[l.index].style.display = 'none';
+                    l = this
+                }
+            }
+        }
+        fn(btns,divs)
+    </script>
+</body>
+
+</html>

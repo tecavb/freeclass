@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+#box{
+    width: 100px;
+    height: 100px;
+    background-color: #113355;
+    overflow: hidden;
+    color: white
+}
+</style>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        function a(){
+            let c=Math.random()*74+48
+            box.innerText+=String.fromCharCode(Math.floor(c))
+        }
+    setInterval(a,100)
+    box.onclick = function () {
+            clearInterval(av)
+        }
+    </script>
+</body>
+</html>

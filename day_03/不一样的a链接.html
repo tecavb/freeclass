@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 链接网址：自动检测是否有中文
+    自动加https://和 .com-->
+    <input type="text" id="url" title=":baidu,http://baidu,www.baidu..." />
+    <a href="javascript:;"><button>进入</button></a>
+    <script>
+        let a = document.getElementsByTagName('a')[0];
+        function chkstrlen(str) {//利用中文是两个字符串长度去检测字符串内是否有中文
+            var strlen = 0;
+            for (var i = 0; i < str.length; i++) {
+                if (str.charCodeAt(i) > 255){ //如果是汉字，则字符串长度加2
+                    strlen += 2;return true;break;}
+                else
+                    {strlen++;}   
+            }
+        }
+        a.onclick = function () {
+            if (url.value == '') { url.placeholder = "请输出网址" }
+            else if (chkstrlen(url.value)) { alert("不能输入中文") }
+            else if (url.value.includes("http://") || url.value.includes("https://"))
+                if (url.value.includes(".com")) { a.href = url.value; }
+                else {a.href = url.value + '.com'}
+            else {
+                if (url.value.includes(".com")) { a.href = "http://" + url.value; }
+                else { a.href = "http://" + url.value + '.com' }
+            }
+            console.log(a.href)
+        }
+    </script>
+</body>
+
+</html>

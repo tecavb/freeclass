@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" id="num1" />
+    <select id="sel">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+        <option>%</option>
+    </select>
+    <input type="text" id="num2" /> =
+    <input type="text" id="Num" />
+    <input type="button" value="计算" id="calcu" />
+    <div id="box"></div>
+    <script>
+
+        calcu.onclick = function () {
+            box.innerText = '';
+            let Num1 = num1.value;
+            let Num2 = num2.value
+            if (num1 != '' && num2 != '') {
+                if (!isNaN(parseFloat(Num1)) && !isNaN(parseFloat(Num2))) {
+                    if (sel.value == '+') {
+                        Num.value = parseFloat(Num1) * 1 + parseFloat(Num2) * 1;
+                    }
+                    else if (sel.value == '-') {
+                        Num.value = parseFloat(Num1) - parseFloat(Num2);
+                    }
+                    else if (sel.value == '*') {
+                        Num.value = parseFloat(Num1) * parseFloat(Num2);
+                    }
+                    else if (sel.value == '/') {
+                        if (parseFloat(Num2) != 0) { Num.value = parseFloat(Num1) / parseFloat(Num2); }
+                        else {
+                            box.innerText = '除数不能为0'
+                        }
+                    }
+                    else {
+                        if (parseFloat(Num2) != 0)
+                            Num.value = parseFloat(Num1) % parseFloat(Num2);
+                        else {
+                            box.innerText = '除数不能为0'
+                        }
+                    }
+                } else {
+                    box.innerText = '输入内容不合法'
+                }
+            }
+
+            else {
+                box.innerText = '内容为空'
+            }
+        }
+
+    </script>
+</body>
+
+</html>

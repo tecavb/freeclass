@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid #e1e1e1;
+        }
+
+        .li1 {
+            background-color: blue;
+        }
+
+        .li2 {
+            background-color: skyblue;
+        }
+        #list{
+            position: absolute;
+            top: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul id="list1">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        let li = document.querySelectorAll('#list li')
+        let li1 = document.querySelectorAll('#list1 li')
+        for (let i = 0; i < li.length; i++) {
+            li[i].index = i;
+            li[i].onmouseover = function () {
+                list.style.opacity='1'
+                list1.style.display='none'
+                for (let i = 0; i <= this.index; i++) {
+                    if (this.index < 2) { li[i].classList.add('li2') }
+                    else { li[i].classList.add('li1'); li[i].classList.remove('li2'); }
+            }
+            li[i].onmouseout = function () {
+                list.style.opacity='0'
+                list1.style.display='block'
+                for (let i = 0; i < li.length; i++) {
+                    li[i].classList.remove('li2', 'li1')
+                }
+            }
+            li[i].onclick = function () {
+                for (let i = 0; i < li.length; i++) {
+                    li1[i].classList.remove('li2', 'li1')
+                }
+                for (let i = 0; i <= this.index; i++) {
+                    if (this.index < 2) { li1[i].classList.add('li2') }
+                    else { li1[i].classList.add('li1'); li1[i].classList.remove('li2'); }
+            }
+        }}}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .box {
+        margin: 0 auto;
+        width: 400px;
+        height: 400px;
+        background-image: url('E:/js/day_04/timg.jpg');
+        background-size: cover;
+    }
+
+    .li1 {
+        width: 40px;
+        height: 40px;
+        background: red;
+        float: left;
+        border: 1px solid #d4d4;
+        box-sizing: border-box
+    }
+
+    .li2 {
+        width: 40px;
+        height: 40px;
+        background: blue;
+        float: left;
+        border: 1px solid #d4d4;
+        box-sizing: border-box
+    }
+</style>
+
+<body>
+    <div class="box">
+        <ul>
+        </ul>
+    </div>
+    <script>
+        function fn(a) {
+            return document.querySelectorAll(a)
+        }
+        let ul = fn('ul')
+        let box = fn('.box')
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                ul[0].innerHTML += '<li></li>'
+            }
+            ul[0].innerHTML += '<br/>';
+        }
+        let li = fn('li')
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+            if (i % 2) {
+                if (j % 2) { li[+('' + i + j)].className = 'li1' }
+                else { li[+('' + i + j)].className = 'li2'; }
+            }
+            else {
+                if (j % 2) { li[+('' + i + j)].className = 'li2' }
+                else { li[+('' + i + j)].className = 'li1'; }
+            }
+            }
+        }
+        for (let i = 0; i < 100; i++) {
+            li[i].nn = i;
+            li[i].onmouseover = function () {
+                li[this.nn].style = 'background:none;'
+            }
+        }
+        // let li = fn('li')
+
+        //  console.log(ul[0].innerHTML)   
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            height: 50px;
+            width: 200px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+
+        .txt_box {
+            width: 200px;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .btns_box {
+            display: none;
+        }
+
+        .btn {
+            height: 50px;
+            float: right;
+            width: 45px;
+        }
+
+        .txt {
+            width: 150px;
+            float: left;
+            line-height: 50px;
+        }
+
+        #add {
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="add">增加文本框</button>
+    <div id="box"></div>
+    </div>
+    <script>
+        add.onclick = function () {
+            document.getElementById('box').innerHTML += `<div class="box">
+        <div class="txt_box">
+            <div class="txt">好好学习,天天向上</div>
+            <button class="btn">修改</button>
+        </div>
+        <div class="btns_box">
+            <input value="好好学习,天天向上" class="inp"/>
+            <button class="no">取消</button>
+            <button class="yes">确定</button>
+            <button class="reset">重置</button>
+            <button class="clear">清空</button>
+        </div>
+    </div>`
+            const box = fun('.box')
+            const btn = fun('.btn')
+            const btns_box = fun('.btns_box')
+            const inp = fun('.inp')
+            const yes = fun('.yes')
+            const no = fun('.no')
+            const txt = fun('.txt')
+            const reset = fun('.reset')
+            const clear = fun('.clear')
+            function fun(a) {
+                let c = document.querySelectorAll(a)
+                return c;
+            }
+            for (let i = 0; i < box.length; i++) {
+                btn[i].onclick = function () {
+                    if (btns_box[i].style.display == "block") {
+                        btns_box[i].style.display = "none";
+                    }
+                    else {
+                        btns_box[i].style.display = "block";
+                        inp[i].value = txt[i].innerText;
+                    }
+                }
+                yes[i].onclick = function () {
+                    txt[i].innerText = inp[i].value;
+                    btns_box[i].style.display = "none"
+                }
+                no[i].onclick = function () {
+                    btns_box[i].style.display = "none"
+                }
+                reset[i].onclick = function () {
+                    inp[i].value = '好好学习,天天向上'
+                }
+                clear[i].onclick = function () {
+                    inp[i].value = ''
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

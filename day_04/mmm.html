@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        let obj={
+            width:'100px',
+            height:'100px',
+            background:'skyblue',
+            border:'1px solid #000'
+        }
+        // document.getElementById('box').style.height="100px";
+        for(let avc in obj){
+            document.getElementById('box').style[avc]=obj[avc]
+        }
+    </script>
+</body>
+</html>

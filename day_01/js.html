@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="" id="xx">
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">1</button>
+    <button id="btn2">2</button>
+    <button id="btn3">3</button>
+    <div id="Box"></div>
+        <!-- <div class="box"></div>
+        <div class="box1"></div>
+    </div>
+    <div id="asc"></div> -->
+    <script>
+        document.getElementById('btn1').onclick=function (){
+            document.getElementById('xx').href="1.css"
+        }
+        document.getElementById('btn2').onclick=function (){
+            document.getElementById('xx').href="2.css"
+        }
+        document.getElementById('btn3').onclick=function (){
+            document.getElementById('xx').href="3.css"
+        }
+        document.onclick=function(){
+            document.getElementById('xx').href="";
+        }
+        // console.log(box);
+        // function aa() {
+        //     let a = document.getElementsByClassName('box1')[0]
+        //     // alert('珠峰');
+        //     a.style.backgroundColor = "yellow";
+        //     // console.log(document.getElementById('BOX'))
+        //     a=null;
+        // }
+        // console.dir(document.getElementsByClassName('box1')[0].style.backgroundColor)
+        // aa()
+        // const b=document.getElementsByClassName('box1')[0];
+       // console.log(b)
+       // console.log(typeof '100' - 1)
+        //console.log(aa)
+        // typeof 判断数据类型
+        // undefined 有这东西，但没赋值。
+        // var x=aa();
+        // document.getElementsByClassName('box')[0].onclick=aa()
+    // console.dir('')
+    </script>
+</body>
+
+</html>

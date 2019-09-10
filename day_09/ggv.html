@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function queryURLParameter(){
+        //     let ary=str.split('?')[1].split('#')[0].split('&')
+        //     let obj={};
+        //     ary.forEach((item,index) => {
+        //         let ary2=ary[index].split('=')
+        //         obj[ary2[0]]=ary2[1]
+        //     });
+        //     return obj;
+        // }
+        function queryURLParameter() {
+            let ary = str.split('?')[1].split('#')[0].split('&')
+            let obj = {};
+            let ary2 = [];
+                ary.forEach((item,index) => {
+                let ary2=ary[index].split('=')
+                obj[ary2[0]]=ary2[1]
+            });
+            // ary.forEach((item) => {
+            //     ary2.push(item.split('='))
+            // });
+            // ary2.forEach((item,index)=>{
+            //     obj[item[0]]=item[1]
+            // })
+            return obj
+        }
+            let str = 'http://www.zhufengpeixun.com/stu/?name=zxt&age=28&sex=0#teacher';
+            let result = queryURLParameter(str);
+            console.log(result);
+    </script>
+</body>
+
+</html>

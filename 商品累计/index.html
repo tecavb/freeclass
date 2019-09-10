@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="price.css" />
+</head>
+
+<body onselectstart="return false;">
+	<div class="wrap">
+		<div class="box">
+			<ul class="list">
+				<li>
+					<i></i>
+					<input type="text" value='0'>
+					<i></i>
+					<span>
+						单价：<strong>12.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<input type="text" value='0'>
+					<i></i>
+					<span>
+						单价：<strong>10.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<input type="text" value='0'>
+					<i></i>
+					<span>
+						单价：<strong>8.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<input type="text" value='0'>
+					<i></i>
+					<span>
+						单价：<strong>8元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<input type="text" value='0'>
+					<i></i>
+					<span>
+						单价：<strong>14.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+			</ul>
+			<div class="info">
+				<span>商品公合计：<em>0</em>件</span>
+				<span>共花费了：<em>0</em>元</span>
+				<br />
+				<br />
+				<span>其中最贵的商品单价是：<em>0</em>元</span>
+			</div>
+		</div>
+	</div>
+	<script>
+		const input = document.querySelectorAll('.list li input')
+		const strong = document.querySelectorAll('.list li span strong')
+		const ii = document.querySelectorAll('.list li i')
+		const em = document.querySelectorAll('.info em ')
+		// console.log(ii[1]);
+		let ary = []
+		for (let i = 0; i < strong.length / 2; i++) {
+			input[i].inx=parseFloat(strong[2 * i].innerHTML)
+			console.log(input[i].inx);
+			(function move() {
+				timer = requestAnimationFrame(move);
+				if(parseFloat(input[i].value)>=0){
+				let everyOne = parseFloat(strong[2 * i].innerHTML) * parseFloat(input[i].value) + '元';
+				strong[2 * i + 1].innerHTML = everyOne
+				let a = 0;
+				let c = 0;
+				let cc=0;
+				for (let j = 0; j < input.length; j++) {
+					a += input[j].value * 1;
+					em[0].innerHTML = a;
+					c += parseFloat(strong[2 * j + 1].innerHTML)
+					em[1].innerHTML = c;
+					if(parseFloat(input[j].value)!=0){
+					if(cc<input[j].inx){
+						cc=input[j].inx
+					}}
+				em[2].innerHTML=cc}}else{
+				alert('数量不能为负');
+				for (let j = 0; j < input.length; j++) {input[i].value=0}}
+			})();
+			ii[2 * i].onclick = function () {
+				input[i].value -= 1;
+			}
+			ii[2 * i + 1].onclick = function () {
+				let a = input[i].value * 1; a += 1; input[i].value = a;
+			}}
+	</script>
+</body>
+
+</html>
