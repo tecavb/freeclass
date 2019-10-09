@@ -32,7 +32,8 @@
             position: absolute;
             top: 0;
             opacity: 0;
-            transition: opacity 0.5s
+            transition: opacity 0.5s;
+            overflow: hidden;
         }
 
         .list li {
@@ -95,6 +96,7 @@
         const left = document.getElementById('left')
         const right = document.getElementById('right')
         const img = document.getElementsByClassName('img')
+        const imgs = document.getElementsByTagName('img')
         function fn(a, b) {//
             for (let i = 0; i < b.length; i++) {
                 if (i == a) { b[i].style.borderColor = "blue";
@@ -106,10 +108,12 @@
         let i = 0;
         let av = setInterval(righ, 3000);
         box.onmouseover = function () {
-            clearInterval(av)
+            clearInterval(av);
+            imgs[i].setAttribute('style','transform: scale(1.05)')
         }
         box.onmouseout = function () {
             av=setInterval(righ, 3000);
+            imgs[i].removeAttribute('style')
         }
         function righ() {
             i++;
