@@ -35,7 +35,16 @@
             transition: opacity 0.5s;
             overflow: hidden;
         }
-
+        .img p{
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            color: #fff;
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            text-align: center;
+        }
         .list li {
             width: 6px;
             height: 6px;
@@ -48,7 +57,7 @@
 
         .list {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
             right: 40px;
             z-index: 999
         }
@@ -62,6 +71,7 @@
             top: 50%;
             margin-top: -20px;
             line-height: 40px;
+            z-index: 999;
         }
 
         #left {
@@ -76,11 +86,7 @@
 
 <body>
     <div id="box">
-        <div class='img' style="opacity: 1"><img src="./images/_01.jpg" alt=""></div>
-        <div class='img'><img src="./images/_02.jpg" alt=""></div>
-        <div class='img'><img src="./images/_03.jpg" alt=""></div>
-        <div class='img'><img src="./images/_04.jpg" alt=""></div>
-        <div class='img'><img src="./images/_05.jpg" alt=""></div>
+        <!-- <div class='img' style="opacity: 1"><img src="./images/_01.jpg" alt=""></div> -->
         <div id="left">左</div>
         <div id="right">右</div>
         <ul class="list">
@@ -94,10 +100,41 @@
     <script>
         const list = document.querySelectorAll('#box .list li');
         const left = document.getElementById('left')
+        const box = document.getElementById('box')
         const right = document.getElementById('right')
         const img = document.getElementsByClassName('img')
         const imgs = document.getElementsByTagName('img')
-        function fn(a, b) {//
+        function getData(){
+            let xhr = new XMLHttpRequest();
+            xhr.open('get','./data.json',true);
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState == 4 && /200|304/.test(xhr.status)){
+                    let data = JSON.parse(xhr.response)
+                    rend(data)
+                    sd()
+                }
+            }
+            xhr.send();
+        }
+        getData()
+        function rend(data=[]){
+            let str = ''
+            data.forEach((item,index) => {
+                let {img,desc}=item;
+                str = `
+                    <img src="${img}" alt="">
+                    <p>${desc}</p>`
+                let div = document.createElement("div")
+                div.setAttribute('class','img')
+                if(index == 0){
+                    div.setAttribute('style','opacity:1')
+                }
+                div.innerHTML = str
+                box.appendChild(div)
+            });
+        }
+        function sd(){
+            function fn(a, b) {//
             for (let i = 0; i < b.length; i++) {
                 if (i == a) { b[i].style.borderColor = "blue";
                  img[i].style = ' opacity: 1;' }
@@ -132,7 +169,7 @@
                 fn(k, list)
                 i = k;
             }
-        }
+        }}
     </script>
 </body>
 
