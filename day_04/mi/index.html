@@ -38,7 +38,7 @@
         .img p{
             position: absolute;
             bottom: 0;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(68, 31, 236, 0.26);
             color: #fff;
             height: 50px;
             line-height: 50px;
@@ -49,8 +49,8 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            border: 1px solid #7c7c7c;
-            background-color: #f1f1f1;
+            border: 1px solid #aaa;
+            background-color: #888;
             float: left;
             margin-left: 15px;
         }
@@ -72,6 +72,8 @@
             margin-top: -20px;
             line-height: 40px;
             z-index: 999;
+            user-select: none;
+            cursor: pointer;
         }
 
         #left {
@@ -90,7 +92,7 @@
         <div id="left">左</div>
         <div id="right">右</div>
         <ul class="list">
-            <li></li>
+            <li style="background-color:#ccc"></li>
             <li></li>
             <li></li>
             <li></li>
@@ -136,9 +138,9 @@
         function sd(){
             function fn(a, b) {//
             for (let i = 0; i < b.length; i++) {
-                if (i == a) { b[i].style.borderColor = "blue";
+                if (i == a) { b[i].style.backgroundColor = "#ccc";
                  img[i].style = ' opacity: 1;' }
-                else { b[i].style.borderColor = ""; 
+                else { b[i].style.backgroundColor = ""; 
                 img[i].style = 'opacity:0' }
             }
         }
